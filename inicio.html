@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TVFLIX - Usuario</title>
+<style>
+  /* Reset y base */
+  body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#080f13;
+    color:#fff;
+  }
+  header {
+    display:flex;
+    align-items:center;
+    padding:1rem;
+    background:#0b161c;
+  }
+  header h1 {
+    font-size:1.5rem;
+    color:#ff0000;
+    margin:0;
+  }
+
+  /* Banner */
+  .banner {
+    position:relative;
+    text-align:left;
+    color:#fff;
+    margin-bottom:1rem;
+  }
+  .banner img {
+    width:100%;
+    max-height:400px;
+    object-fit:cover;
+  }
+  .banner-text {
+    position:absolute;
+    bottom:1rem;
+    left:1rem;
+    background:rgba(0,0,0,0.5);
+    padding:1rem;
+    border-radius:6px;
+  }
+  .banner-text h2 {
+    margin:0 0 0.5rem 0;
+    font-size:1.5rem;
+  }
+  .banner-text p {
+    margin:0;
+    font-size:1rem;
+  }
+
+  /* Canales en grid */
+  .canales {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap:1rem;
+    padding:1rem;
+  }
+  .canal {
+    background:#0d1f2c;
+    padding:0.5rem;
+    border-radius:8px;
+    text-align:center;
+    cursor:pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .canal:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff0000;
+  }
+  .canal img {
+    width:100%;
+    height:80px;
+    object-fit:contain;
+    margin-bottom:0.5rem;
+  }
+  .canal p {
+    margin:0;
+    font-size:0.9rem;
+  }
+
+  /* Reproductor */
+  .reproductor {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    z-index:1000;
+  }
+  .reproductor video {
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+  .cerrar {
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:#ff0000;
+    border:none;
+    padding:0.5rem 1rem;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:4px;
+    z-index:1001;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .banner-text h2 {
+      font-size:1.2rem;
+    }
+    .banner-text p {
+      font-size:0.9rem;
+    }
+    .canal img {
+      height:60px;
+    }
+    .canal p {
+      font-size:0.8rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .canal img {
+      height:120px;
+    }
+    .canal p {
+      font-size:1.1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>TVFLIX</h1>
+</header>
+
+<div class="banner">
+  <img src="https://www.adslzone.net/app/uploads-adslzone.net/2025/07/Partidos-LaLiga-EA-Sports-destacado-Movistar-Plus.png" alt="Banner">
+  <div class="banner-text">
+    <h2>LALIGA - Vive La Liga</h2>
+    <p>Segunda jornada de LALIGA EA SPORTS. ¡Disfruta de los mejores partidos y la emoción de la Liga!</p>
+  </div>
+</div>
+
+<h2 style="margin-left:1rem;">Canales habituales</h2>
+<div class="canales">
+  <div class="canal" onclick="reproducir('/.netlify/functions/proxy?url=http://3gpjk9ny.g2afdo.xyz:80/play/hut84503/@TST3ub6awd/320782.m3u8')">
+    <img src="https://www.adslzone.net/app/uploads-adslzone.net/2022/07/dazn-laliga-negro.cut_.jpg" alt="DAZN LaLiga">
+    <p>DAZN LaLiga</p>
+</div>
+  <div class="canal" onclick="reproducir('http://3gpjk9ny.g2afdo.xyz:80/play/hut84503/@TST3ub6awd/320792.m3u8')">
+    <img src="https://www.adslzone.net/app/uploads-adslzone.net/2022/07/dazn-laliga-negro.cut_.jpg" alt="DAZN LaLiga SD">
+    <p>DAZN LaLiga SD</p>
+  </div>
+  <div class="canal" onclick="reproducir('http://3gpjk9ny.g2afdo.xyz:80/play/hut84503/@TST3ub6awd/165385.m3u8')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/LaLiga_por_Movistar_Plus%2B_2022_logo.svg/2560px-LaLiga_por_Movistar_Plus%2B_2022_logo.svg.png" alt="Movistar LaLiga">
+    <p>Movistar LaLiga</p>
+  </div>
+<div class="canal" onclick="reproducir('http://3gpjk9ny.g2afdo.xyz:80/play/hut84503/@TST3ub6awd/165393.m3u8')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/LaLiga_por_Movistar_Plus%2B_2022_logo.svg/2560px-LaLiga_por_Movistar_Plus%2B_2022_logo.svg.png" alt="Movistar LaLiga">
+    <p>Movistar LaLiga SD</p>
+  </div>
+  <div class="canal" onclick="reproducir('http://3gpjk9ny.g2afdo.xyz:80/play/hut84503/@TST3ub6awd/246282.m3u8')">
+    <img src="https://tvepg.eu/img/spain/logo/liga_de_campeones_por_movistar_plus_plus.png" alt="Movistar LaLiga Campeones">
+    <p>Movistar L. Campeones</p>
+  </div>
+</div>
+
+<div class="reproductor" id="reproductor">
+  <button class="cerrar" onclick="cerrarReproductor()">Cerrar</button>
+  <video id="video" controls autoplay></video>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+function reproducir(url) {
+  const video = document.getElementById('video');
+  const reproductor = document.getElementById('reproductor');
+
+  if(Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource(url);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function() {
+      video.play();
+    });
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = url;
+    video.play();
+  } else {
+    alert('Tu navegador no soporta HLS');
+  }
+
+  reproductor.style.display = 'block';
+}
+
+function cerrarReproductor() {
+  const reproductor = document.getElementById('reproductor');
+  const video = document.getElementById('video');
+  video.pause();
+  video.src = '';
+  reproductor.style.display = 'none';
+}
+</script>
+
+</body>
+</html>

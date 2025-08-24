@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TVFLIZ - Login</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #080f13;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .login-container {
+    background: #0b161c;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .login-container h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #ff0000;
+  }
+
+  .login-container input {
+    width: calc(100% - 2rem);
+    padding: 0.9rem;
+    margin-bottom: 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #0b161c;
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .login-container input:focus {
+    outline: none;
+    border-color: #ff0000;
+  }
+
+  .login-container button {
+    width: calc(100% - 2rem);
+    padding: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    background: #ff0000;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+
+  .login-container button:hover,
+  .login-container button:focus {
+    background: #cc0000;
+    outline: none;
+  }
+
+  .error {
+    color: #ff5555;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  @media (min-width: 1920px) {
+    .login-container {
+      max-width: 600px;
+      padding: 2.5rem;
+    }
+    .login-container h1 {
+      font-size: 3rem;
+    }
+    .login-container input {
+      font-size: 1.4rem;
+      padding: 1rem;
+    }
+    .login-container button {
+      font-size: 1.4rem;
+      padding: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <h1>TVFLIZ</h1>
+  <input type="text" id="username" placeholder="Usuario">
+  <input type="password" id="password" placeholder="Contraseña">
+  <button onclick="login()">Entrar</button>
+  <p id="error" class="error"></p>
+</div>
+
+<!-- Firebase Modern (v12) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCYHCmd8B4oSTrDS3EAIhZlHFBDS74rYAI",
+    authDomain: "tvfliz-104c6.firebaseapp.com",
+    projectId: "tvfliz-104c6",
+    storageBucket: "tvfliz-104c6.firebasestorage.app",
+    messagingSenderId: "844702244423",
+    appId: "1:844702244423:web:f75bbf00795ece02709b62"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window.login = function() {
+    const email = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    const errorEl = document.getElementById('error');
+
+    signInWithEmailAndPassword(auth, email, pass)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        if(email === 'admin@tvfliz.com'){
+          errorEl.innerText = '';
+          alert('Login de admin correcto');
+          window.location.href = 'admin.html';
+        } else {
+          errorEl.innerText = '';
+          alert('Login de usuario correcto');
+          window.location.href = 'inicio.html';
+        }
+      })
+      .catch((error) => {
+        errorEl.innerText = 'Usuario o contraseña incorrectos';
+      });
+  }
+</script>
+
+</body>
+</html>
