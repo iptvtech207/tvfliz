@@ -1,0 +1,3 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="ext" tvg-name="DAZNLALIGA" group-title="SPAIN",DAZN LALIGA
+http://127.0.0.1:6878/ace/getstream?id=4e6d9cf7d177366045d33cd8311d8b1d7f4bed1f&hlc=1&transcode_audio=0&transcode_mp3=0&transcode_ac3=0&preferred_audio_language=eng&_idx=-1.m3u8
